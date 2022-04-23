@@ -8,3 +8,8 @@ plugins {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+ext {
+    retrofit2_version = '2.9.0'
+    okhttp_version = '4.9.3'
+}
