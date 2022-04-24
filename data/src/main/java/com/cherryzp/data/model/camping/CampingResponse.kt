@@ -1,6 +1,6 @@
 package com.cherryzp.data.model.camping
 
-data class Camping(
+data class CampingResponse(
     val addr1: String,
     val addr2: String,
     val allar: Int,
