@@ -6,11 +6,9 @@ import javax.inject.Inject
 
 class GetCampingListUseCase @Inject constructor(private val campingRepository: CampingRepository) {
     suspend fun excute(
-        serviceKey: String,
         numOfRows: Int,
         pageNo: Int,
         mobileOs: String,
         mobileApp: String,
-        type: String
-    ): List<Camping>? = campingRepository.getCampingList(serviceKey, numOfRows, pageNo, mobileOs, mobileApp, type)
+    ): List<Camping>? = campingRepository.getCampingList(numOfRows, pageNo, mobileOs, mobileApp)
 }

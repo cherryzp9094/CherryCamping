@@ -8,12 +8,10 @@ import retrofit2.Response
 interface CampingRepository {
 
     suspend fun getCampingList(
-        serviceKey: String,
         numOfRows: Int,
         pageNo: Int,
         mobileOs: String,
         mobileApp: String,
-        type: String
     ): List<Camping>?
 
 }
