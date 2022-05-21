@@ -27,7 +27,7 @@ class MainViewModel @Inject constructor(
                 _campingList.postValue(getCampingListUseCase.excute(
                     20,
                     1,
-                    "ETC",
+                    "AND",
                     "AppTest"
                 ))
             }

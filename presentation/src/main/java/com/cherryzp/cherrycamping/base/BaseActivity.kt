@@ -21,9 +21,10 @@ abstract class BaseActivity<T : ViewDataBinding>: AppCompatActivity(), Coroutine
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.Main
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         bind(layoutId)
+
     }
 
     private fun bind(layoutId: Int) {
