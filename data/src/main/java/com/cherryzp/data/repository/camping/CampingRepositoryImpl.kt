@@ -16,7 +16,6 @@ class CampingRepositoryImpl @Inject constructor(private val campingRemoteDataSou
         mobileApp: String,
     ): List<Camping>? {
         return campingRemoteDataSource.getBasedList(BuildConfig.GO_CAMPING_API_KEY, numOfRows, pageNo, mobileOs, mobileApp, "json").body()?.let {
-            Log.e("CampingRepository", it.toString())
             mapperToCamping(it.response.body.items.item)
         }
     }

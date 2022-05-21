@@ -22,7 +22,6 @@ class MainViewModel @Inject constructor(
         get() = _campingList
 
     fun getCampingList() {
-
             CoroutineScope(Dispatchers.IO).launch {
                 _campingList.postValue(getCampingListUseCase.excute(
                     20,
