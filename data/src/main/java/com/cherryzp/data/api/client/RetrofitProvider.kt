@@ -10,5 +10,6 @@ fun provideRetrofit(): Retrofit =
     Retrofit.Builder()
         .client(createOkhttpClientBuilder())
         .baseUrl(BuildConfig.GO_CAMPING_SERVER_URL)
+        .addConverterFactory(NullOnEmptyConverterFactory.create())
         .addConverterFactory(GsonConverterFactory.create())
         .build()

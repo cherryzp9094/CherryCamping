@@ -30,6 +30,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     private fun setupCampingItem() {
         viewmodel.campingList.observe(this) {
             Log.e("MAIN ACTIVITY", it.toString())
+            binding.tvData.text = it.toString()
         }
     }
 }

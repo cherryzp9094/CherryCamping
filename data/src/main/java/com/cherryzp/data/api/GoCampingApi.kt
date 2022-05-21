@@ -10,13 +10,13 @@ import retrofit2.http.Query
 
 interface GoCampingApi {
 
-    @GET
+    @GET("basedList")
     suspend fun getBasedList(
-        @Query("ServiceKey") serviceKey: String,
+        @Query("ServiceKey", encoded = true) serviceKey: String,
         @Query("numOfRows") numOfRows: Int,
         @Query("pageNo") pageNo: Int,
         @Query("MobileOS") mobileOs: String,
-        @Query("MobileApp") mobileApp: String,
+        @Query("MobileApp", encoded = true) mobileApp: String,
         @Query("_type") type: String
     ): Response<BasedListResponse>
 

@@ -1,5 +1,6 @@
 package com.cherryzp.data.repository.camping
 
+import android.util.Log
 import com.cherryzp.data.BuildConfig
 import com.cherryzp.data.mapper.camping.mapperToCamping
 import com.cherryzp.data.repository.camping.remote.CampingRemoteDataSource
@@ -15,7 +16,8 @@ class CampingRepositoryImpl @Inject constructor(private val campingRemoteDataSou
         mobileApp: String,
     ): List<Camping>? {
         return campingRemoteDataSource.getBasedList(BuildConfig.GO_CAMPING_API_KEY, numOfRows, pageNo, mobileOs, mobileApp, "json").body()?.let {
-            mapperToCamping(it.body.items)
+            Log.e("CampingRepository", it.toString())
+            mapperToCamping(it.response.body.items.item)
         }
     }
 }
