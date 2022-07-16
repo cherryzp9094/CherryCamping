@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.cherryzp.cherrycamping.databinding.ItemCampingRecyclerBinding
 import com.cherryzp.domain.model.Camping
 
@@ -24,9 +25,10 @@ class CampingRecyclerAdapter: ListAdapter<Camping, CampingRecyclerAdapter.VH>(Di
         holder.bind(getItem(position))
     }
 
-    inner class VH(binding: ItemCampingRecyclerBinding): RecyclerView.ViewHolder(binding.root) {
+    inner class VH(private val binding: ItemCampingRecyclerBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(camping: Camping) {
-
+            binding.camping = camping
+            Glide.with(binding.ivCamping.context).load(camping.firstImageUrl).into(binding.ivCamping)
         }
     }
 

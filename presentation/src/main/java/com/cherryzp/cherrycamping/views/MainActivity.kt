@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.cherryzp.cherrycamping.R
 import com.cherryzp.cherrycamping.base.BaseActivity
 import com.cherryzp.cherrycamping.databinding.ActivityMainBinding
@@ -23,14 +24,21 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         super.onCreate(savedInstanceState)
 
         setupCampingItem()
+        initCampingRecyclerAdapter()
 
         viewmodel.getCampingList()
     }
 
+    private fun initCampingRecyclerAdapter() {
+        binding.rvCampingList.apply {
+            layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.VERTICAL, false)
+            adapter = CampingRecyclerAdapter()
+        }
+    }
+
     private fun setupCampingItem() {
         viewmodel.campingList.observe(this) {
-            Log.e("MAIN ACTIVITY", it.toString())
-            binding.tvData.text = it.toString()
+            (binding.rvCampingList.adapter as CampingRecyclerAdapter).submitList(it)
         }
     }
 }

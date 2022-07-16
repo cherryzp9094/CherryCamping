@@ -1,6 +1,8 @@
 package com.cherryzp.data.repository.camping.remote
 
+import com.cherryzp.data.api.client.NetworkResponse
 import com.cherryzp.data.model.camping.BasedListResponse
+import com.cherryzp.data.model.camping.CampingErrorResponse
 import io.reactivex.Single
 import retrofit2.Call
 import retrofit2.Response
@@ -17,6 +19,6 @@ interface CampingRemoteDataSource {
         mobileOs: String,
         mobileApp: String,
         type: String
-    ): Response<BasedListResponse>
+    ): NetworkResponse<BasedListResponse, CampingErrorResponse>
 
 }

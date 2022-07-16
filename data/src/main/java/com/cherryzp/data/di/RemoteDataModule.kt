@@ -16,5 +16,4 @@ class RemoteDataModule {
     fun provideCampingRemoteDataSource(campingApi: GoCampingApi): CampingRemoteDataSource {
         return CampingRemoteDataSourceImpl(campingApi)
     }
-
 }
