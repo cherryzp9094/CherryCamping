@@ -40,8 +40,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     private fun setupCampingItem() {
-        viewModel.campingList.observe(this) {
-            (binding.rvCampingList.adapter as CampingRecyclerAdapter).submitList(it)
+        viewModel.campingList.observe(this) { (binding.rvCampingList.adapter as CampingRecyclerAdapter).submitList(it)
         }
     }
 }
