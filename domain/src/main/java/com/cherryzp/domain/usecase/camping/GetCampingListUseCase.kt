@@ -5,6 +5,7 @@ import com.cherryzp.domain.repository.camping.CampingRepository
 import javax.inject.Inject
 
 class GetCampingListUseCase @Inject constructor(private val campingRepository: CampingRepository) {
+
     suspend fun excute(
         numOfRows: Int,
         pageNo: Int,

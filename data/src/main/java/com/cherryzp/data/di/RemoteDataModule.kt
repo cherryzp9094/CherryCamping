@@ -1,19 +1,21 @@
 package com.cherryzp.data.di
 
-import com.cherryzp.data.api.GoCampingApi
-import com.cherryzp.data.repository.camping.remote.CampingRemoteDataSource
-import com.cherryzp.data.repository.camping.remote.CampingRemoteDataSourceImpl
+import com.cherryzp.data.api.GoCampingService
+import com.cherryzp.data.remote.CampingRemoteDataSource
+import com.cherryzp.data.remote.CampingRemoteDataSourceImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
 @Module
 class RemoteDataModule {
 
+    @Singleton
     @Provides
-    fun provideCampingRemoteDataSource(campingApi: GoCampingApi): CampingRemoteDataSource {
-        return CampingRemoteDataSourceImpl(campingApi)
+    fun provideCampingRemoteDataSource(campingService: GoCampingService): CampingRemoteDataSource {
+        return CampingRemoteDataSourceImpl(campingService)
     }
 }
