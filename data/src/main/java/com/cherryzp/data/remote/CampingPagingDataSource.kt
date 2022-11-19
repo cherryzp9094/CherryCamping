@@ -1,15 +1,15 @@
-package com.cherryzp.data.repository.camping.remote
+package com.cherryzp.data.remote
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.cherryzp.data.BuildConfig
-import com.cherryzp.data.api.GoCampingApi
+import com.cherryzp.data.api.GoCampingService
 import com.cherryzp.data.api.client.NetworkResponse
 import com.cherryzp.data.mapper.camping.mapperToCamping
 import com.cherryzp.domain.model.Camping
 import javax.inject.Inject
 
-class CampingPagingDataSource (private val campingApi: GoCampingApi): PagingSource<Int, Camping>() {
+class CampingPagingDataSource @Inject constructor (private val campingApi: GoCampingService): PagingSource<Int, Camping>() {
     override fun getRefreshKey(state: PagingState<Int, Camping>): Int? {
         return 0
     }

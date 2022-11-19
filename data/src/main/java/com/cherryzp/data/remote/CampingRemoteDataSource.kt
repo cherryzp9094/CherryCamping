@@ -1,4 +1,4 @@
-package com.cherryzp.data.repository.camping.remote
+package com.cherryzp.data.remote
 
 import com.cherryzp.data.api.client.NetworkResponse
 import com.cherryzp.data.model.camping.BasedListResponse

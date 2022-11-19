@@ -4,11 +4,11 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.cherryzp.data.BuildConfig
-import com.cherryzp.data.api.GoCampingApi
+import com.cherryzp.data.api.GoCampingService
 import com.cherryzp.data.api.client.NetworkResponse
 import com.cherryzp.data.mapper.camping.mapperToCamping
-import com.cherryzp.data.repository.camping.remote.CampingPagingDataSource
-import com.cherryzp.data.repository.camping.remote.CampingRemoteDataSource
+import com.cherryzp.data.remote.CampingPagingDataSource
+import com.cherryzp.data.remote.CampingRemoteDataSource
 import com.cherryzp.domain.model.Camping
 import com.cherryzp.domain.repository.camping.CampingRepository
 import kotlinx.coroutines.flow.Flow
@@ -16,6 +16,7 @@ import javax.inject.Inject
 
 class CampingRepositoryImpl @Inject constructor(
     private val campingRemoteDataSource: CampingRemoteDataSource,
+    private val campingPagingDataSource: CampingPagingDataSource
 ): CampingRepository {
     override suspend fun getCampingList(
         numOfRows: Int,
@@ -34,7 +35,7 @@ class CampingRepositoryImpl @Inject constructor(
     override suspend fun getCampingPagingList(): Flow<PagingData<Camping>> {
         return Pager(
             config = PagingConfig(pageSize = 20, enablePlaceholders = false),
-            pagingSourceFactory = { CampingPagingDataSource(GoCampingApi.create()) }
+            pagingSourceFactory = { campingPagingDataSource }
         ).flow
     }
 }
