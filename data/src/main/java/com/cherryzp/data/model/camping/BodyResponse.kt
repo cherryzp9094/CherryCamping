@@ -7,6 +7,6 @@ data class BodyResponse(
     val totalCount: Int
 ) {
     data class Items(
-        val item: List<CampingResponse>
+        val item: List<CampingEntity>
     )
 }

@@ -1,6 +1,6 @@
-package com.cherryzp.domain.model
+package com.cherryzp.domain.dto
 
-data class Camping(
+data class CampingDto(
     val addr1: String?,
     val addr2: String?,
     val allar: Int?,

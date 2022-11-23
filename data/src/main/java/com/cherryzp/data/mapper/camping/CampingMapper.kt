@@ -1,11 +1,11 @@
 package com.cherryzp.data.mapper.camping
 
-import com.cherryzp.data.model.camping.CampingResponse
-import com.cherryzp.domain.model.Camping
+import com.cherryzp.data.model.camping.CampingEntity
+import com.cherryzp.domain.dto.CampingDto
 
-fun mapperToCamping(campings: List<CampingResponse>): List<Camping> {
+fun mapperToCamping(campings: List<CampingEntity>): List<CampingDto> {
     return campings.toList().map {
-        Camping(
+        CampingDto(
             it.addr1,
             it.addr2,
             it.allar,
