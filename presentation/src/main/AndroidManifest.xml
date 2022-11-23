@@ -13,7 +13,7 @@
         android:name=".di.CherryApplication"
         android:theme="@style/Theme.CherryCamping">
         <activity
-            android:name=".views.MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

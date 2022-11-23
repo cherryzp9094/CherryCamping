@@ -6,15 +6,15 @@ import com.cherryzp.data.BuildConfig
 import com.cherryzp.data.api.GoCampingService
 import com.cherryzp.data.api.client.NetworkResponse
 import com.cherryzp.data.mapper.camping.mapperToCamping
-import com.cherryzp.domain.model.Camping
+import com.cherryzp.domain.dto.CampingDto
 import javax.inject.Inject
 
-class CampingPagingDataSource @Inject constructor (private val campingApi: GoCampingService): PagingSource<Int, Camping>() {
-    override fun getRefreshKey(state: PagingState<Int, Camping>): Int? {
+class CampingPagingDataSource @Inject constructor (private val campingApi: GoCampingService): PagingSource<Int, CampingDto>() {
+    override fun getRefreshKey(state: PagingState<Int, CampingDto>): Int? {
         return 0
     }
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Camping> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, CampingDto> {
         return try {
             val page = params.key?: 0
             when (val response = campingApi.getBasedList(BuildConfig.GO_CAMPING_API_KEY, pageNo = page)) {

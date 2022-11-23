@@ -1,15 +1,27 @@
 package com.cherryzp.domain.usecase.camping
 
-import com.cherryzp.domain.model.Camping
+import androidx.paging.PagingData
+import com.cherryzp.domain.di.IoDispatcher
+import com.cherryzp.domain.dto.CampingDto
 import com.cherryzp.domain.repository.camping.CampingRepository
+import com.cherryzp.domain.usecase.UseCase
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class GetCampingListUseCase @Inject constructor(private val campingRepository: CampingRepository) {
+open class GetCampingListUseCase @Inject constructor(
+    private val campingRepository: CampingRepository,
+    @IoDispatcher dispatcher: CoroutineDispatcher
+    ): UseCase<GetCampingRequestParameter, Flow<PagingData<CampingDto>>>(dispatcher) {
 
-    suspend fun excute(
-        numOfRows: Int,
-        pageNo: Int,
-        mobileOs: String,
-        mobileApp: String,
-    ): List<Camping>? = campingRepository.getCampingList(numOfRows, pageNo, mobileOs, mobileApp)
+    override suspend fun execute(parameter: GetCampingRequestParameter): Flow<PagingData<CampingDto>> {
+        val (numOfRows, mobileOs, mobileApp) = parameter
+        return campingRepository.getCampingPagingList(numOfRows, mobileOs, mobileApp)
+    }
 }
+
+data class GetCampingRequestParameter(
+    val numOfRows: Int,
+    val mobileOs: String,
+    val mobileApp: String
+)

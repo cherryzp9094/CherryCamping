@@ -1,7 +1,7 @@
 package com.cherryzp.domain.repository.camping
 
 import androidx.paging.PagingData
-import com.cherryzp.domain.model.Camping
+import com.cherryzp.domain.dto.CampingDto
 import kotlinx.coroutines.flow.Flow
 
 interface CampingRepository {
@@ -11,7 +11,11 @@ interface CampingRepository {
         pageNo: Int,
         mobileOs: String,
         mobileApp: String,
-    ): List<Camping>?
+    ): List<CampingDto>?
 
-    suspend fun getCampingPagingList(): Flow<PagingData<Camping>>
+    suspend fun getCampingPagingList(
+        numOfRows: Int,
+        mobileOs: String,
+        mobileApp: String
+    ): Flow<PagingData<CampingDto>>
 }
