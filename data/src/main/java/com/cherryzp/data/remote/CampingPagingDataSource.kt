@@ -19,9 +19,11 @@ class CampingPagingDataSource @Inject constructor (private val campingApi: GoCam
             val page = params.key?: 0
             when (val response = campingApi.getBasedList(BuildConfig.GO_CAMPING_API_KEY, pageNo = page)) {
                 is NetworkResponse.Success -> {
-                    val campingList = response.body.response.body.items.item.let {
-                        mapperToCamping(it)
-                    }
+                    val campingList = response.body.response.body?.items?.item?.let {
+                        it.map { entity ->
+                            entity.mapperToCamping()
+                        }
+                    } ?: emptyList()
                     val nextPage = if(campingList.count() == 20) page + 1 else null
                     LoadResult.Page(data = campingList, nextKey = nextPage, prevKey = null)
                 }

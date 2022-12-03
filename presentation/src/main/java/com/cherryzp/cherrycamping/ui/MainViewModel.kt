@@ -27,14 +27,7 @@ class MainViewModel @Inject constructor(
         get() = _campingDtoList
 
     fun getCampingList() {
-//            CoroutineScope(Dispatchers.IO).launch {
-//                _campingDtoList.postValue(getCampingListUseCase.execute(
-//                    20,
-//                    1,
-//                    "AND",
-//                    "AppTest"
-//                ))
-//            }
+
     }
 
     fun getCampingPagingList() {
