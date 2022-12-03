@@ -1,11 +1,10 @@
 package com.cherryzp.data.remote
 
 import com.cherryzp.data.api.client.NetworkResponse
-import com.cherryzp.data.model.camping.BasedListResponse
+import com.cherryzp.data.model.camping.CampingBaseListEntity
+import com.cherryzp.data.model.camping.CampingEntity
+import com.cherryzp.data.model.camping.ResponseBase
 import com.cherryzp.data.model.camping.CampingErrorResponse
-import io.reactivex.Single
-import retrofit2.Call
-import retrofit2.Response
 
 interface CampingRemoteDataSource {
 
@@ -19,6 +18,6 @@ interface CampingRemoteDataSource {
         mobileOs: String,
         mobileApp: String,
         type: String
-    ): NetworkResponse<BasedListResponse, CampingErrorResponse>
+    ): NetworkResponse<ResponseBase<CampingBaseListEntity<CampingEntity>>, CampingErrorResponse>
 
 }

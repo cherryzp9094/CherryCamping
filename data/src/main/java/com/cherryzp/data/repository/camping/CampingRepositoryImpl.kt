@@ -25,7 +25,9 @@ class CampingRepositoryImpl @Inject constructor(
     ): List<CampingDto>? {
         return when(val response = campingRemoteDataSource.getBasedList(BuildConfig.GO_CAMPING_API_KEY, numOfRows, pageNo, mobileOs, mobileApp, "json")) {
             is NetworkResponse.Success -> {
-                mapperToCamping(response.body.response.body.items.item)
+                response.body.response.body?.items?.item?.map {
+                    it.mapperToCamping()
+                } ?: emptyList()
             }
             else -> null
         }

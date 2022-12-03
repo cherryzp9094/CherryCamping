@@ -82,7 +82,6 @@ object NetworkModule {
             throw RuntimeException(e)
         }
 
-
     @Singleton
     @Provides
     fun provideOKHttpClient(

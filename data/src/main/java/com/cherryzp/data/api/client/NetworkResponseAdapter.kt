@@ -17,7 +17,6 @@ import java.lang.reflect.Type
  * 그러니까 R을 T로 바꾼다라고 보면 된다.
  * 지금 이렇게 GoCampingResponse~들을 만드는 이유가 요놈(GoCampingResponseAdapter)을 suspend fun에서 써먹기 위함이다.
  */
-
 class NetworkResponseAdapter<S : Any, E : Any>(
     private val successType: Type,
     private val errorBodyConverter: Converter<ResponseBody, E>

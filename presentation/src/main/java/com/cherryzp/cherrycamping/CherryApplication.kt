@@ -1,4 +1,4 @@
-package com.cherryzp.cherrycamping.di
+package com.cherryzp.cherrycamping
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

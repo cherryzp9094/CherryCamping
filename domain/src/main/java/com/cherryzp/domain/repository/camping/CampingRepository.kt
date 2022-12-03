@@ -11,7 +11,7 @@ interface CampingRepository {
         pageNo: Int,
         mobileOs: String,
         mobileApp: String,
-    ): List<CampingDto>?
+    ): List<CampingDto>
 
     suspend fun getCampingPagingList(
         numOfRows: Int,
