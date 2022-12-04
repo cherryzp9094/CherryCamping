@@ -7,11 +7,11 @@ import androidx.paging.cachedIn
 import com.cherryzp.cherrycamping.base.BaseViewModel
 import com.cherryzp.domain.dto.CampingDto
 import com.cherryzp.domain.usecase.camping.GetCampingListUseCase
-import com.cherryzp.domain.usecase.camping.GetCampingRequestParameter
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import com.cherryzp.domain.result.Result
+import com.cherryzp.domain.result.succeeded
 import kotlinx.coroutines.flow.collect
 
 @HiltViewModel
@@ -26,13 +26,9 @@ class MainViewModel @Inject constructor(
     val campingDtoList: LiveData<List<CampingDto>>
         get() = _campingDtoList
 
-    fun getCampingList() {
-
-    }
-
     fun getCampingPagingList() {
         viewModelScope.launch {
-            when(val response = getCampingListUseCase(GetCampingRequestParameter(20, "AND", "AppTest"))) {
+            when(val response = getCampingListUseCase(20)) {
                 is Result.Success -> {
                     response.data.cachedIn(viewModelScope).collect {
                         _state.value = MainState.CampingData(it)

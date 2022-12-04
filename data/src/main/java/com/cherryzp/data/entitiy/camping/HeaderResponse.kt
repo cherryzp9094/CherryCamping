@@ -1,4 +1,4 @@
-package com.cherryzp.data.model.camping
+package com.cherryzp.data.entitiy.camping
 
 data class HeaderResponse(
     val responseTime: String? = "",

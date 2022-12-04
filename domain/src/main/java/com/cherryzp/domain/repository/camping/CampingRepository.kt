@@ -6,16 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface CampingRepository {
 
-    suspend fun getCampingList(
-        numOfRows: Int,
-        pageNo: Int,
-        mobileOs: String,
-        mobileApp: String,
-    ): List<CampingDto>
-
     suspend fun getCampingPagingList(
-        numOfRows: Int,
-        mobileOs: String,
-        mobileApp: String
+        numOfRows: Int
     ): Flow<PagingData<CampingDto>>
 }

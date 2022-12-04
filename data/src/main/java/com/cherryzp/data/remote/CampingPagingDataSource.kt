@@ -28,7 +28,7 @@ class CampingPagingDataSource @Inject constructor (private val campingApi: GoCam
                     LoadResult.Page(data = campingList, nextKey = nextPage, prevKey = null)
                 }
                 else -> {
-                    LoadResult.Error(Throwable("에러"))
+                    LoadResult.Error(Throwable("error"))
                 }
             }
 
