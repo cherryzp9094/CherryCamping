@@ -1,6 +1,6 @@
 package com.cherryzp.data.mapper.camping
 
-import com.cherryzp.data.model.camping.CampingEntity
+import com.cherryzp.data.entitiy.camping.CampingEntity
 import com.cherryzp.domain.dto.CampingDto
 import com.cherryzp.domain.extends.default
 

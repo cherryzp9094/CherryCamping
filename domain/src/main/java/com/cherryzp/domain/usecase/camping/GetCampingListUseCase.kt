@@ -12,16 +12,9 @@ import javax.inject.Inject
 open class GetCampingListUseCase @Inject constructor(
     private val campingRepository: CampingRepository,
     @IoDispatcher dispatcher: CoroutineDispatcher
-    ): UseCase<GetCampingRequestParameter, Flow<PagingData<CampingDto>>>(dispatcher) {
+    ): UseCase<Int, Flow<PagingData<CampingDto>>>(dispatcher) {
 
-    override suspend fun execute(parameter: GetCampingRequestParameter): Flow<PagingData<CampingDto>> {
-        val (numOfRows, mobileOs, mobileApp) = parameter
-        return campingRepository.getCampingPagingList(numOfRows, mobileOs, mobileApp)
+    override suspend fun execute(parameter: Int): Flow<PagingData<CampingDto>> {
+        return campingRepository.getCampingPagingList(parameter)
     }
 }
-
-data class GetCampingRequestParameter(
-    val numOfRows: Int,
-    val mobileOs: String,
-    val mobileApp: String
-)
