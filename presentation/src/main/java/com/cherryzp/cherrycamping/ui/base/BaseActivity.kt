@@ -1,4 +1,4 @@
-package com.cherryzp.cherrycamping.base
+package com.cherryzp.cherrycamping.ui.base
 
 import android.os.Bundle
 import android.os.PersistableBundle
@@ -25,11 +25,16 @@ abstract class BaseActivity<T : ViewDataBinding>: AppCompatActivity(), Coroutine
         super.onCreate(savedInstanceState)
         bind(layoutId)
 
+        beforeBinding()
+        afterBinding()
     }
 
     private fun bind(layoutId: Int) {
         binding = DataBindingUtil.setContentView(this, layoutId)
     }
+
+    abstract fun beforeBinding()
+    abstract fun afterBinding()
 
     override fun onDestroy() {
         super.onDestroy()

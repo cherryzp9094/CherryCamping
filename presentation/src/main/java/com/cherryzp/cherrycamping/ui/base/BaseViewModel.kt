@@ -1,4 +1,4 @@
-package com.cherryzp.cherrycamping.base
+package com.cherryzp.cherrycamping.ui.base
 
 import androidx.lifecycle.ViewModel
 
