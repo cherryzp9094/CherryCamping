@@ -1,12 +1,13 @@
-package com.cherryzp.cherrycamping.ui
+package com.cherryzp.cherrycamping.ui.main
 
-import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.cherryzp.cherrycamping.R
-import com.cherryzp.cherrycamping.base.BaseActivity
+import com.cherryzp.cherrycamping.ui.base.BaseActivity
 import com.cherryzp.cherrycamping.databinding.ActivityMainBinding
+import com.cherryzp.cherrycamping.extends.repeatOnStarted
+import com.cherryzp.cherrycamping.ui.CampingRecyclerAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -20,15 +21,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     private val campingAdapter = CampingRecyclerAdapter()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        setupCampingItem()
-        initCampingRecyclerAdapter()
-
-        viewModel.getCampingPagingList()
-    }
-
     private fun initCampingRecyclerAdapter() {
         binding.rvCampingList.apply {
             layoutManager = GridLayoutManager(this@MainActivity, 2, GridLayoutManager.VERTICAL, false)
@@ -37,14 +29,26 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     private fun setupCampingItem() {
-        viewModel.state.observe(this) { state ->
-            when (state) {
-                is MainState.CampingData -> {
-                    lifecycleScope.launch {
-                        campingAdapter.submitData(state.item)
+        repeatOnStarted {
+            viewModel.eventFlow.collect { state ->
+                when (state) {
+                    is MainEvent.CampingData -> {
+                        lifecycleScope.launch {
+                            campingAdapter.submitData(state.item)
+                        }
                     }
+                    else -> {}
                 }
             }
         }
+    }
+
+    override fun beforeBinding() {
+        initCampingRecyclerAdapter()
+        setupCampingItem()
+    }
+
+    override fun afterBinding() {
+        viewModel.getCampingPagingList()
     }
 }
