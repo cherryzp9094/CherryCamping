@@ -1,10 +1,10 @@
 package com.cherryzp.domain.usecase
 
-import kotlinx.coroutines.CoroutineDispatcher
 import com.cherryzp.domain.result.Result
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 
-abstract class UseCase<in P, R>(private val coroutineDispatcher: CoroutineDispatcher) {
+abstract class CoroutineUseCase<in P, R>(private val coroutineDispatcher: CoroutineDispatcher) {
 
     suspend operator fun invoke(parameter: P): Result<R> {
         return try {
