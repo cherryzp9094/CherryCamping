@@ -14,8 +14,7 @@ class CampingRepositoryImpl @Inject constructor(
     private val campingRemoteDataSource: CampingRemoteDataSource,
     private val campingPagingDataSource: CampingPagingDataSource
 ): CampingRepository {
-
-    override suspend fun getCampingPagingList(
+    override fun getCampingPagingList(
         numOfRows: Int
     ): Flow<PagingData<CampingDto>> {
         return Pager(

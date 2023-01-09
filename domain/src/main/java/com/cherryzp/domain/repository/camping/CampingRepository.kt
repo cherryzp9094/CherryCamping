@@ -5,8 +5,7 @@ import com.cherryzp.domain.dto.CampingDto
 import kotlinx.coroutines.flow.Flow
 
 interface CampingRepository {
-
-    suspend fun getCampingPagingList(
+    fun getCampingPagingList(
         numOfRows: Int
     ): Flow<PagingData<CampingDto>>
 }
