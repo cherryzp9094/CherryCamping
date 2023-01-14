@@ -1,16 +1,15 @@
 package com.cherryzp.cherrycamping.ui.main
 
 import androidx.lifecycle.viewModelScope
+import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.cherryzp.cherrycamping.ui.base.BaseViewModel
+import com.cherryzp.domain.dto.CampingDto
 import com.cherryzp.domain.result.Result
 import com.cherryzp.domain.usecase.camping.GetCampingListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -19,8 +18,11 @@ class MainViewModel @Inject constructor(
     private val getCampingListUseCase: GetCampingListUseCase
 ): BaseViewModel() {
 
-    private val _eventFlow = MutableStateFlow<MainEvent>(MainEvent.NONE)
-    val eventFlow: StateFlow<MainEvent> get() = _eventFlow.asStateFlow()
+    private val _eventFlow = MutableSharedFlow<MainEvent>()
+    val eventFlow: SharedFlow<MainEvent> get() = _eventFlow.asSharedFlow()
+
+    private val _campingFlow = MutableStateFlow<PagingData<CampingDto>>(PagingData.empty())
+    val campingFlow: StateFlow<PagingData<CampingDto>> get() = _campingFlow.asStateFlow()
 
     fun getCampingPagingList() {
         viewModelScope.launch {
@@ -28,7 +30,7 @@ class MainViewModel @Inject constructor(
                 is Result.Success -> {
                     response.data.cachedIn(viewModelScope).flowOn(Dispatchers.IO)
                         .collect { pagingData ->
-                            _eventFlow.emit(MainEvent.CampingData(pagingData))
+                            _campingFlow.emit(pagingData)
                         }
                 }
                 is Result.Error -> {
