@@ -1,15 +1,12 @@
 package com.cherryzp.cherrycamping.ui.main
 
 import androidx.activity.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.cherryzp.cherrycamping.R
-import com.cherryzp.cherrycamping.ui.base.BaseActivity
 import com.cherryzp.cherrycamping.databinding.ActivityMainBinding
-import com.cherryzp.cherrycamping.extends.repeatOnStarted
 import com.cherryzp.cherrycamping.ui.CampingRecyclerAdapter
+import com.cherryzp.cherrycamping.ui.base.BaseActivity
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>() {
@@ -29,18 +26,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     private fun setupCampingItem() {
-        repeatOnStarted {
-            viewModel.eventFlow.collect { state ->
-                when (state) {
-                    is MainEvent.CampingData -> {
-                        lifecycleScope.launch {
-                            campingAdapter.submitData(state.item)
-                        }
-                    }
-                    else -> {}
-                }
-            }
-        }
+
     }
 
     override fun beforeBinding() {
