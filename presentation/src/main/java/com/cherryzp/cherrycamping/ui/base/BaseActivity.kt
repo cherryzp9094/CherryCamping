@@ -1,7 +1,6 @@
 package com.cherryzp.cherrycamping.ui.base
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
@@ -25,14 +24,17 @@ abstract class BaseActivity<T : ViewDataBinding>: AppCompatActivity(), Coroutine
         super.onCreate(savedInstanceState)
         bind(layoutId)
 
+        initView()
         beforeBinding()
         afterBinding()
     }
 
     private fun bind(layoutId: Int) {
         binding = DataBindingUtil.setContentView(this, layoutId)
+
     }
 
+    abstract fun initView()
     abstract fun beforeBinding()
     abstract fun afterBinding()
 
