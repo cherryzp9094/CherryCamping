@@ -24,6 +24,12 @@ class MainViewModel @Inject constructor(
     private val _campingFlow = MutableStateFlow<PagingData<CampingDto>>(PagingData.empty())
     val campingFlow: StateFlow<PagingData<CampingDto>> get() = _campingFlow.asStateFlow()
 
+    fun onClickDetail() {
+        viewModelScope.launch {
+            _eventFlow.emit(MainEvent.OnClickDetail)
+        }
+    }
+
     fun getCampingPagingList() {
         viewModelScope.launch {
             when (val response = getCampingListUseCase(20)) {
