@@ -1,11 +1,11 @@
 package com.cherryzp.data.mapper.camping
 
-import com.cherryzp.data.entitiy.camping.CampingEntity
-import com.cherryzp.domain.dto.CampingDto
+import com.cherryzp.data.remote.model.camping.CampingData
 import com.cherryzp.domain.extends.default
+import com.cherryzp.domain.model.Camping
 
-fun CampingEntity.mapperToCamping(): CampingDto =
-    CampingDto(
+fun CampingData.mapperToCamping(): Camping =
+    Camping(
         contentId.default(),
         facltNm.default(),
         lineIntro.default(),

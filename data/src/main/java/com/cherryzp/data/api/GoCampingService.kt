@@ -1,10 +1,10 @@
 package com.cherryzp.data.api
 
 import com.cherryzp.data.api.client.NetworkResponse
-import com.cherryzp.data.entitiy.camping.CampingBaseListEntity
-import com.cherryzp.data.entitiy.camping.CampingEntity
-import com.cherryzp.data.entitiy.camping.ResponseBase
-import com.cherryzp.data.entitiy.camping.CampingErrorResponse
+import com.cherryzp.data.remote.model.camping.CampingBaseListData
+import com.cherryzp.data.remote.model.camping.CampingData
+import com.cherryzp.data.remote.model.camping.CampingErrorResponse
+import com.cherryzp.data.remote.model.camping.ResponseBase
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -17,7 +17,7 @@ interface GoCampingService {
         @Query(MOBILE_OS) mobileOs: String = "AND",
         @Query(MOBILE_APP, encoded = true) mobileApp: String = "AppTest",
         @Query(TYPE) type: String = "json"
-    ): NetworkResponse<ResponseBase<CampingBaseListEntity<CampingEntity>>, CampingErrorResponse>
+    ): NetworkResponse<ResponseBase<CampingBaseListData<CampingData>>, CampingErrorResponse>
 
     companion object {
         const val SERVICE_KEY = "ServiceKey"

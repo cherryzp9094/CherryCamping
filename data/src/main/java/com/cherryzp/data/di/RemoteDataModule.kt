@@ -1,8 +1,8 @@
 package com.cherryzp.data.di
 
 import com.cherryzp.data.api.GoCampingService
-import com.cherryzp.data.remote.CampingRemoteDataSource
-import com.cherryzp.data.remote.CampingRemoteDataSourceImpl
+import com.cherryzp.data.remote.dataSource.CampingRemoteDataSource
+import com.cherryzp.data.remote.dataSource.CampingRemoteDataSourceImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

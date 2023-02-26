@@ -1,4 +1,4 @@
-package com.cherryzp.data.entitiy.camping
+package com.cherryzp.data.remote.model.camping
 
 data class CampingErrorResponse(
     val responseTime: String?,

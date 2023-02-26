@@ -1,16 +1,16 @@
-package com.cherryzp.data.entitiy.camping
+package com.cherryzp.data.remote.model.camping
 
-data class CampingEntity(
-     val contentId : String?,
-     val facltNm : String?,
-     val lineIntro : String?,
-     val intro : String?,
-     val allar : String?,
-     val insrncAt : String?,
-     val trsagntNo : String?,
-     val bizrno : String?,
-     val facltDivNm : String?,
-     val mangeDivNm : String?,
+data class CampingData(
+     val contentId: String?,
+     val facltNm: String?,
+     val lineIntro: String?,
+     val intro: String?,
+     val allar: String?,
+     val insrncAt: String?,
+     val trsagntNo: String?,
+     val bizrno: String?,
+     val facltDivNm: String?,
+     val mangeDivNm: String?,
      val mgcDiv : String?,
      val manageSttus : String?,
      val hvofBgnde : String?,

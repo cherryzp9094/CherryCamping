@@ -1,8 +1,8 @@
 package com.cherryzp.data.di
 
+import com.cherryzp.data.remote.dataSource.CampingPagingDataSource
+import com.cherryzp.data.remote.dataSource.CampingRemoteDataSource
 import com.cherryzp.data.repository.camping.CampingRepositoryImpl
-import com.cherryzp.data.remote.CampingPagingDataSource
-import com.cherryzp.data.remote.CampingRemoteDataSource
 import com.cherryzp.domain.repository.camping.CampingRepository
 import dagger.Module
 import dagger.Provides

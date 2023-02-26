@@ -5,7 +5,7 @@
     <data>
         <variable
             name="camping"
-            type="com.cherryzp.domain.dto.CampingDto" />
+            type="com.cherryzp.domain.model.Camping" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

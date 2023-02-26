@@ -7,9 +7,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.cherryzp.cherrycamping.databinding.ItemCampingRecyclerBinding
-import com.cherryzp.domain.dto.CampingDto
+import com.cherryzp.domain.model.Camping
 
-class CampingRecyclerAdapter: PagingDataAdapter<CampingDto, CampingRecyclerAdapter.VH>(DiffCallback()){
+class CampingRecyclerAdapter :
+    PagingDataAdapter<Camping, CampingRecyclerAdapter.VH>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
         return VH(
@@ -26,19 +27,21 @@ class CampingRecyclerAdapter: PagingDataAdapter<CampingDto, CampingRecyclerAdapt
         holder.bind(item)
     }
 
-    inner class VH(private val binding: ItemCampingRecyclerBinding): RecyclerView.ViewHolder(binding.root) {
-        fun bind(campingDto: CampingDto) {
-            binding.camping = campingDto
-            Glide.with(binding.ivCamping.context).load(campingDto.firstImageUrl).into(binding.ivCamping)
+    inner class VH(private val binding: ItemCampingRecyclerBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(camping: Camping) {
+            binding.camping = camping
+            Glide.with(binding.ivCamping.context).load(camping.firstImageUrl)
+                .into(binding.ivCamping)
         }
     }
 
-    private class DiffCallback: DiffUtil.ItemCallback<CampingDto>() {
-        override fun areItemsTheSame(oldItem: CampingDto, newItem: CampingDto): Boolean {
+    private class DiffCallback : DiffUtil.ItemCallback<Camping>() {
+        override fun areItemsTheSame(oldItem: Camping, newItem: Camping): Boolean {
             return oldItem.addr1 == newItem.addr1
         }
 
-        override fun areContentsTheSame(oldItem: CampingDto, newItem: CampingDto): Boolean {
+        override fun areContentsTheSame(oldItem: Camping, newItem: Camping): Boolean {
             return oldItem.addr1 == newItem.addr1
         }
 
