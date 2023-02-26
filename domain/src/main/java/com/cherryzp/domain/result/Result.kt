@@ -1,6 +1,5 @@
 package com.cherryzp.domain.result
 
-import androidx.lifecycle.MutableLiveData
 import com.cherryzp.domain.result.Result.Success
 import kotlinx.coroutines.flow.MutableStateFlow
 
@@ -32,14 +31,6 @@ fun <T> Result<T>.successOr(fallback: T): T {
 val <T> Result<T>.data: T?
     get() = (this as? Success)?.data
 
-/**
- * Updates value of [liveData] if [Result] is of type [Success]
- */
-inline fun <reified T> Result<T>.updateOnSuccess(liveData: MutableLiveData<T>) {
-    if (this is Success) {
-        liveData.value = data
-    }
-}
 /**
  * Updates value of [MutableStateFlow] if [Result] is of type [Success]
  */

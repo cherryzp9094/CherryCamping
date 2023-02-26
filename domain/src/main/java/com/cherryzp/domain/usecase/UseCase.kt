@@ -2,7 +2,7 @@ package com.cherryzp.domain.usecase
 
 import com.cherryzp.domain.result.Result
 
-abstract class UseCase<in P, R>() {
+abstract class UseCase<in P, R> {
 
     operator fun invoke(parameter: P): Result<R> {
         return try {
