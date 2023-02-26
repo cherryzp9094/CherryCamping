@@ -1,7 +1,7 @@
 package com.cherryzp.data.mapper.camping
 
+import com.cherryzp.data.extends.default
 import com.cherryzp.data.remote.model.camping.CampingData
-import com.cherryzp.domain.extends.default
 import com.cherryzp.domain.model.Camping
 
 fun CampingData.mapperToCamping(): Camping =

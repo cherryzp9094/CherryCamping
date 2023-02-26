@@ -1,4 +1,4 @@
-package com.cherryzp.domain.extends
+package com.cherryzp.data.extends
 
 import java.util.*
 

@@ -6,14 +6,18 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.CoroutineDispatcher
 
 @InstallIn(SingletonComponent::class)
 @Module
 class UseCaseModule {
 
     @Provides
-    fun provideGetCampingListUseCase(campingRepository: CampingRepository): GetCampingListUseCase {
-        return GetCampingListUseCase(campingRepository)
+    fun provideGetCampingListUseCase(
+        campingRepository: CampingRepository,
+        @IoDispatcher dispatcher: CoroutineDispatcher
+    ): GetCampingListUseCase {
+        return GetCampingListUseCase(campingRepository, dispatcher)
     }
 
 }
