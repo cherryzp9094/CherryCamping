@@ -1,12 +1,28 @@
 package com.cherryzp.cherrycamping.ui.detail
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+import androidx.activity.viewModels
 import com.cherryzp.cherrycamping.R
+import com.cherryzp.cherrycamping.databinding.ActivityCampingDetailBinding
+import com.cherryzp.cherrycamping.ui.base.BaseBindingActivity
+import dagger.hilt.android.AndroidEntryPoint
 
-class CampingDetailActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_camping_detail)
+@AndroidEntryPoint
+class CampingDetailActivity :
+    BaseBindingActivity<ActivityCampingDetailBinding, CampingDetailViewModel>() {
+    override val viewModel: CampingDetailViewModel by viewModels()
+
+    override val layoutId: Int
+        get() = R.layout.activity_camping_detail
+
+    override fun initView() {
+
+    }
+
+    override fun beforeBinding() {
+
+    }
+
+    override fun afterBinding() {
+
     }
 }

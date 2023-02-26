@@ -1,16 +1,16 @@
-package com.cherryzp.domain.dto
+package com.cherryzp.domain.model
 
-data class CampingDto(
-    val contentId : String,
-    val facltNm : String,
-    val lineIntro : String,
-    val intro : String,
-    val allar : String,
-    val insrncAt : String,
-    val trsagntNo : String,
-    val bizrno : String,
-    val facltDivNm : String,
-    val mangeDivNm : String,
+data class Camping(
+    val contentId: String,
+    val facltNm: String,
+    val lineIntro: String,
+    val intro: String,
+    val allar: String,
+    val insrncAt: String,
+    val trsagntNo: String,
+    val bizrno: String,
+    val facltDivNm: String,
+    val mangeDivNm: String,
     val mgcDiv : String,
     val manageSttus : String,
     val hvofBgnde : String,

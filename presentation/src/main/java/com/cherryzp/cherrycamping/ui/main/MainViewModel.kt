@@ -4,7 +4,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.cherryzp.cherrycamping.ui.base.BaseViewModel
-import com.cherryzp.domain.dto.CampingDto
+import com.cherryzp.domain.model.Camping
 import com.cherryzp.domain.result.Result
 import com.cherryzp.domain.usecase.camping.GetCampingListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -21,8 +21,14 @@ class MainViewModel @Inject constructor(
     private val _eventFlow = MutableSharedFlow<MainEvent>()
     val eventFlow: SharedFlow<MainEvent> get() = _eventFlow.asSharedFlow()
 
-    private val _campingFlow = MutableStateFlow<PagingData<CampingDto>>(PagingData.empty())
-    val campingFlow: StateFlow<PagingData<CampingDto>> get() = _campingFlow.asStateFlow()
+    private val _campingFlow = MutableStateFlow<PagingData<Camping>>(PagingData.empty())
+    val campingFlow: StateFlow<PagingData<Camping>> get() = _campingFlow.asStateFlow()
+
+    fun onClickDetail() {
+        viewModelScope.launch {
+            _eventFlow.emit(MainEvent.OnClickDetail)
+        }
+    }
 
     fun getCampingPagingList() {
         viewModelScope.launch {
