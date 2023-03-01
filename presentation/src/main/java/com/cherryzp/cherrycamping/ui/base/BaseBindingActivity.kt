@@ -11,6 +11,8 @@ abstract class BaseBindingActivity<T : ViewDataBinding, V : BaseViewModel>() : B
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        setupDefaultObserver(viewModel)
+
         binding.apply {
             setVariable(BR.vm, viewModel)
             lifecycleOwner = this@BaseBindingActivity

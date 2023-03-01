@@ -31,7 +31,7 @@ class MainViewModel @Inject constructor(
     }
 
     fun getCampingPagingList() {
-        viewModelScope.launch {
+        viewModelLaunch {
             when (val response = getCampingListUseCase(20)) {
                 is Result.Success -> {
                     response.data.cachedIn(viewModelScope).flowOn(Dispatchers.IO)
